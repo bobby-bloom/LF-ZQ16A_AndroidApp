@@ -63,10 +63,10 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         final int id = item.getItemId();
         if (id == R.id.bmi_calc_menu) {
-            setFrame(bmiFragment, R.string.bmi_calc_menu);
+            setFrame(bmiFragment);
             return true;
         } else if (id == R.id.donation_menu) {
-            setFrame(donationFragment, R.string.donation_menu);
+            setFrame(donationFragment);
             playDonationSound();
             return true;
         }
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity
         mp.start();
     }
 
-    private void setFrame(Fragment fragment, int resId) {
+    private void setFrame(Fragment fragment) {
         getSupportFragmentManager()
             .beginTransaction()
             .replace(R.id.flFragment, fragment)
