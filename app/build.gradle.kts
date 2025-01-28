@@ -1,3 +1,5 @@
+import com.android.tools.r8.internal.pl
+
 plugins {
     alias(libs.plugins.android.application)
 }
@@ -37,6 +39,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.29")
 
     implementation("com.github.daniel-stoneuk:material-about-library:2.4.2")
 
