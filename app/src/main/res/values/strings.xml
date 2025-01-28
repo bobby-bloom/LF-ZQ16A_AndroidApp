@@ -6,6 +6,7 @@
 
     <string name="weight_metric">Weight</string>
     <string name="height_metric">Height</string>
+s    <string name="age">Age</string>
 
     <string name="more_information">More information on Wikipedia</string>
     <string name="wikipedia_bmi_link">https://en.wikipedia.org/wiki/Body_mass_index</string>
@@ -26,7 +27,11 @@
     <string name="bmi_female_selection">Female</string>
 
     <string name="bmi_default_height">180</string>
+    <string name="bmi_default_weight">80</string>
+    <string name="bmi_default_age">32</string>
+
     <string name="bmi_height_unit">cm</string>
+    <string name="bmi_weight_unit">kg</string>
 
     <string name="bmi_action_calculate">Calculate your BMI</string>
 

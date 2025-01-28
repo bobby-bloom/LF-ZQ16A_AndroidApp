@@ -8,20 +8,20 @@
     android:paddingTop="16dp"
     tools:context=".MainActivity"
 >
-
+    <!--  BEGIN Centering Helper -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/fragment_bmi_horizontal_center"
         android:layout_centerInParent="true"
     />
-
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
         android:id="@+id/fragment_bmi_vertical_center"
     />
+    <!--  END Centering Helper -->
 
     <!--  BEGIN Male Button  -->
     <RelativeLayout
@@ -29,13 +29,14 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_toStartOf="@id/fragment_bmi_vertical_center"
-        android:background="@drawable/bmi_selection_bg_selector"
+        android:layout_above="@id/fragment_bmi_slider_wrapper"
         android:layout_marginBottom="35dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?attr/selectableItemBackground"
+        android:background="@drawable/bmi_selection_bg_selector"
     >
         <ImageView
             android:layout_width="140dp"
@@ -64,14 +65,16 @@
         android:id="@+id/female_selection_frame"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginRight="20dp"
         android:layout_toEndOf="@id/fragment_bmi_vertical_center"
-        android:background="@drawable/bmi_selection_bg_selector"
+        android:layout_above="@id/fragment_bmi_slider_wrapper"
+        android:layout_marginBottom="35dp"
+        android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?attr/selectableItemBackground"
-    >
+        android:background="@drawable/bmi_selection_bg_selector"
+        >
         <ImageView
             android:layout_width="140dp"
             android:layout_height="140dp"
@@ -100,10 +103,10 @@
         android:layout_width="340dp"
         android:layout_height="150dp"
         android:layout_above="@id/fragment_bmi_horizontal_center"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/bmi_selection_bg"
+        android:layout_centerInParent="true"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
+        android:background="@drawable/bmi_selection_bg"
     >
         <TextView
             android:layout_width="match_parent"
@@ -155,6 +158,158 @@
     </RelativeLayout>
     <!--  END Height Slider  -->
 
+    <!-- BEGIN Weight increment -->
+    <RelativeLayout
+        android:id="@+id/bmi_weight_wrapper"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_toStartOf="@id/fragment_bmi_vertical_center"
+        android:layout_below="@id/fragment_bmi_slider_wrapper"
+        android:layout_marginTop="35dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/bmi_selection_bg"
+    >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/textPrimary"
+            android:text="@string/weight_metric"
+            android:layout_marginTop="15dp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
+        />
+
+        <TextView
+            android:id="@+id/bmi_selection_weight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/bmi_default_weight"
+            android:textAlignment="center"
+            android:textColor="@color/textPrimary"
+            android:textSize="30sp"
+            android:textStyle="bold"
+        />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+        >
+            <ImageView
+                android:id="@+id/bmi_weight_decrement"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_remove_circle_foreground"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true"
+        >
+            <ImageView
+                android:id="@+id/bmi_weight_increment"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_add_circle_foreground"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+            />
+        </RelativeLayout>
+    </RelativeLayout>
+    <!-- END Weight increment -->
+
+    <!-- BEGIN Age increment -->
+    <RelativeLayout
+        android:id="@+id/bmi_age_wrapper"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_toEndOf="@id/fragment_bmi_vertical_center"
+        android:layout_below="@id/fragment_bmi_slider_wrapper"
+        android:layout_marginTop="35dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/bmi_selection_bg"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/textPrimary"
+            android:text="@string/age"
+            android:layout_marginTop="15dp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
+            />
+
+        <TextView
+            android:id="@+id/bmi_selection_age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/bmi_default_age"
+            android:textAlignment="center"
+            android:textColor="@color/textPrimary"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            >
+            <ImageView
+                android:id="@+id/bmi_age_decrement"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_remove_circle_foreground"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true"
+            >
+            <ImageView
+                android:id="@+id/bmi_age_increment"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_add_circle_foreground"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+    <!-- END Age increment -->
+
     <!--  BEGIN Calculate Btn  -->
     <RelativeLayout
         android:layout_width="340dp"
@@ -164,21 +319,21 @@
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         >
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/bmi_btn_calculate"
-                android:layout_height="60dp"
-                android:layout_width="match_parent"
-                android:layout_marginBottom="16dp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:textSize="18sp"
-                android:text="@string/bmi_action_calculate"
-                android:textColor="@color/textPrimary"
-                android:textStyle="bold"
-                app:cornerRadius="16dp"
-                app:backgroundTint="@color/colorAccent"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bmi_btn_calculate"
+            android:layout_height="60dp"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="16dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textSize="18sp"
+            android:text="@string/bmi_action_calculate"
+            android:textColor="@color/textPrimary"
+            android:textStyle="bold"
+            app:cornerRadius="16dp"
+            app:backgroundTint="@color/colorAccent"
             />
-        </RelativeLayout>
+    </RelativeLayout>
     <!--  END Calculate Btn  -->
 </RelativeLayout>
