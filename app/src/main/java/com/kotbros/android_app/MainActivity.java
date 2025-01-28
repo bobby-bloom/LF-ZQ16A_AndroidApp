@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
             playDonationSound();
             return true;
         }
+
         return false;
     }
 
