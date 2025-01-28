@@ -5,7 +5,6 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -15,7 +14,8 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class MainActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity
+        implements NavigationBarView.OnItemSelectedListener {
 
     BottomNavigationView bottomNavigation;
     BMIFragment bmiFragment;
@@ -83,7 +83,5 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
             .beginTransaction()
             .replace(R.id.flFragment, fragment)
             .commit();
-        TextView header = (TextView)this.findViewById(R.id.fragment_header);
-        header.setText(getString(resId));
     }
 }
