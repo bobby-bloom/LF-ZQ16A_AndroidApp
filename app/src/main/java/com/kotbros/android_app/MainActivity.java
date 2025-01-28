@@ -1,6 +1,7 @@
 package com.kotbros.android_app;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -66,9 +67,15 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
             return true;
         } else if (id == R.id.donation_menu) {
             setFrame(donationFragment, R.string.donation_menu);
+            playDonationSound();
             return true;
         }
         return false;
+    }
+
+    private void playDonationSound() {
+        MediaPlayer mp = MediaPlayer.create(this, R.raw.donation_please);
+        mp.start();
     }
 
     private void setFrame(Fragment fragment, int resId) {
