@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bmi_calc_menu"
+        android:title="@string/bmi_calc_menu"
+        android:icon="@drawable/ic_menu_bmi_foreground"/>
+    <item
+        android:id="@+id/donation_menu"
+        android:title="@string/donation_menu"
+        android:icon="@drawable/ic_menu_donation_foreground"/>
+</menu>
