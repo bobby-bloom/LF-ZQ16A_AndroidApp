@@ -1,121 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BMIFragment">
+    android:paddingTop="16dp"
+    tools:context=".MainActivity"
+>
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment_bmi_horizontal_center"
+        android:layout_centerInParent="true"
+    />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        android:layout_centerInParent="true"
+        android:id="@+id/fragment_bmi_vertical_center"
+    />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <!--  BEGIN Male Button  -->
+    <RelativeLayout
+        android:id="@+id/male_selection_frame"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_toStartOf="@id/fragment_bmi_vertical_center"
+        android:background="@drawable/bmi_selection_bg_selector"
+        android:layout_marginBottom="35dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+    >
+        <ImageView
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_selection_male_foreground"
+        />
+
+        <TextView
+            android:id="@+id/male_selection_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/textPrimary"
+            android:text="@string/bmi_male_selection"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+        />
+    </RelativeLayout>
+    <!--  END Male Button  -->
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txt_height_outer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+    <!--  BEGIN Female Button  -->
+    <RelativeLayout
+        android:id="@+id/female_selection_frame"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginRight="20dp"
+        android:layout_toEndOf="@id/fragment_bmi_vertical_center"
+        android:background="@drawable/bmi_selection_bg_selector"
+        android:layout_marginLeft="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+    >
+        <ImageView
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_selection_female_foreground"
+        />
 
-                <AutoCompleteTextView
-                    android:id="@+id/txt_height"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:digits="0123456789.,"
-                    android:ems="10"
-                    android:hint="@string/height_metric"
-                    android:inputType="numberDecimal"
-                    android:maxLines="1"
-                    android:singleLine="true" />
-            </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/female_selection_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/textPrimary"
+            android:text="@string/bmi_female_selection"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+        />
+    </RelativeLayout>
+    <!--  END Female Button  -->
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txt_weight_outer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_height_outer">
+    <!--  BEGIN Height Slider  -->
+    <RelativeLayout
+        android:id="@+id/fragment_bmi_slider_wrapper"
+        android:layout_width="340dp"
+        android:layout_height="150dp"
+        android:layout_above="@id/fragment_bmi_horizontal_center"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bmi_selection_bg"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+    >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textPrimary"
+            android:text="@string/height_metric"
+            android:textSize="20sp"
+        />
 
-                <AutoCompleteTextView
-                    android:id="@+id/txt_weight"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/weight_metric"
-                    android:inputType="numberDecimal"
-                    android:maxLines="1"
-                    android:singleLine="true" />
-            </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/bmi_selection_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bmi_default_height"
+            android:layout_marginBottom="50dp"
+            android:textSize="40sp"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/textPrimary"
+            android:layout_centerInParent="true"
+            android:textStyle="bold"
+        />
 
-            <TextView
-                android:id="@+id/txt_result_bmi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_weight_outer"
-                tools:text="BMI: 20" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bmi_height_unit"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_toEndOf="@id/bmi_selection_height"
+            android:layout_marginStart="20dp"
+            android:layout_centerInParent="true"
+            android:textColor="@color/textPrimary"
+        />
 
-            <TextView
-                android:id="@+id/txt_result_cat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_result_bmi"
-                tools:text="Normal (healthy weight) " />
+        <SeekBar
+            android:id="@+id/bmi_height_range_slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"
+            android:progressTint="@color/colorAccent"
+            android:thumbTint="@color/textPrimary"
+            android:layout_marginRight="10dp"
+        />
+    </RelativeLayout>
+    <!--  END Height Slider  -->
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_more_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/more_information"
-                android:textColor="#ffffff"
-                app:backgroundTint="@color/colorPrimary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_result_cat" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-
-</FrameLayout>
+    <!--  BEGIN Calculate Btn  -->
+    <RelativeLayout
+        android:layout_width="340dp"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        >
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bmi_btn_calculate"
+                android:layout_height="60dp"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="16dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textSize="18sp"
+                android:text="@string/bmi_action_calculate"
+                android:textColor="@color/textPrimary"
+                android:textStyle="bold"
+                app:cornerRadius="16dp"
+                app:backgroundTint="@color/colorAccent"
+            />
+        </RelativeLayout>
+    <!--  END Calculate Btn  -->
+</RelativeLayout>
