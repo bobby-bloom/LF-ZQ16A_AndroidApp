@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity
             playDonationSound();
             return true;
         }
+
         return false;
     }
 

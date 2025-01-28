@@ -11,8 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="116dp"
+        android:soundEffectsEnabled="true"
     >
         <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/begging_cat_gif"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@raw/donation_cat_begging"
@@ -21,12 +23,6 @@
         />
 
     </RelativeLayout>
-    <TextView
-
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-    />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -35,7 +31,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_donation"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
             android:layout_marginStart="100dp"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
@@ -43,6 +39,7 @@
             android:text="@string/submit_donate_btn"
             android:textSize="29sp"
             android:textColor="#001c64"
+            android:backgroundTint="#ffc439"
             app:icon="@drawable/ic_paypal_logo"
             app:iconSize="50dp"
             app:iconTintMode="multiply"
@@ -51,8 +48,8 @@
             tools:ignore="MissingConstraints"
             android:shadowColor="#0070e0"
             android:shadowDx="2"
-            android:shadowDy="1"
-            android:shadowRadius="6"
+            android:shadowDy="0"
+            android:shadowRadius="4"
         />
     </RelativeLayout>
 
