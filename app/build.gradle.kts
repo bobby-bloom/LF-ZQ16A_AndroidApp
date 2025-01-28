@@ -1,5 +1,3 @@
-import com.android.tools.r8.internal.pl
-
 plugins {
     alias(libs.plugins.android.application)
 }
