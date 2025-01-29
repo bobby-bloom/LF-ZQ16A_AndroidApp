@@ -71,7 +71,6 @@ public class BMIFragment extends Fragment {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {}
-
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
@@ -89,12 +88,12 @@ public class BMIFragment extends Fragment {
         ImageView removeIcon = view.findViewById(R.id.bmi_age_decrement);
         ImageView addIcon    = view.findViewById(R.id.bmi_age_increment);
 
-        removeIcon.setOnClickListener(v -> updateAge(weight-1));
-        addIcon.setOnClickListener(v -> updateAge(weight+1));
+        removeIcon.setOnClickListener(v -> updateAge(age-1));
+        addIcon.setOnClickListener(v -> updateAge(age+1));
     }
 
     private void updateHeight(int height) {
-        if (height > MAX_HEIGHT) {
+        if (height < 0 || height > MAX_HEIGHT) {
             return;
         }
         this.height = height;
@@ -102,7 +101,7 @@ public class BMIFragment extends Fragment {
     }
 
     private void updateWeight(int weight) {
-        if (weight > MAX_WEIGHT) {
+        if (weight < 0 || weight > MAX_WEIGHT) {
             return;
         }
         this.weight = weight;
@@ -110,7 +109,7 @@ public class BMIFragment extends Fragment {
     }
 
     private void updateAge(int age) {
-        if (age > MAX_AGE) {
+        if (age < 0 || age > MAX_AGE) {
             return;
         }
         this.age = age;
