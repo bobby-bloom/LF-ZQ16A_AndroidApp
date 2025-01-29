@@ -47,25 +47,32 @@ s    <string name="age">Age</string>
     <string name="privacy_policy">Privacy policy</string>
 
     <string name="bmi_calc_menu">BMI Calculator</string>
+
     <string name="donation_menu">Donation</string>
+    <string name="submit_donate_btn">DONATE HERE!</string>
 
     <string name="privacy_policy_content"><![CDATA[
-    1. If you install this app via Google Play, Google will collect information about your device
-    and show me them in the Google Play console. In case of a crash some information will be
-    uploaded to Google. I have no control over this. Please refer to their privacy policy for details.\n\n
-    2. If you install this app via F-Droid, I cannot see any usage data. Please refer to their privacy policy for details.\n\n
-    3. If running a device with Auto Backup by Google, Google will upload your system of units to Google Drive: https://developer.android.com/guide/topics/data/autobackup\n\n
-    4. You can mail me at characterdog.apps@gmail.com. In this case I and Google will know your
-    e-mail address and everything your write in your mail. I will delete your mail after your issue
-    has been solved or your question has been answered. Google may have a backup of the mail and not
-    delete it when I do so.\n\n
-    5. If you click a link on the About screen the websites\' operator may collect information about
-    your device.\n\n
-    6. I will not share the information with anybody else.
+        Privacy Policy
+
+        Thank you for using this BMI Calculator app. Your privacy is important, and this policy explains how data is handled. \n\n
+
+        1. Google Play Services\n
+           - If you install this app via Google Play, Google may collect certain device and usage data, which is visible to me through the Google Play Console.\n
+           - In case of a crash, some information may be automatically uploaded to Google.\n
+           - I have no control over this data collection. Please review https://policies.google.com/privacy for details.\n\n
+
+        2. F-Droid Installations\n
+           - If you install this app via F-Droid, I do not receive any usage or crash data.\n
+           - Please refer to https://f-droid.org/en/about/ for details on their data handling.\n
+
+        3. Auto Backup by Google\n
+           - If your device has **Auto Backup by Google** enabled, your selected system of units (metric/imperial) may be backed up to Google Drive.\n
+           - More details can be found here: https://developer.android.com/guide/topics/data/autobackup.\n\n
+
+        4. External Links\n
+           - If you click on a link in the About screen, the website you visit may collect data about your device.\n
+           - Please review the privacy policy of the respective website for details.\n\n
+
+        No personal data is collected, stored, or shared by this app beyond what is mentioned above.\n\n
     ]]></string>
-    <string name="donation">Donation</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="submit_donate_btn">DONATE HERE!</string>
-    <string name="cat_gif">cat gif</string>
 </resources>
