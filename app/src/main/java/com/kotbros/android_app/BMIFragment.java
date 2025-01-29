@@ -1,16 +1,22 @@
 package com.kotbros.android_app;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.core.util.Consumer;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class BMIFragment extends Fragment {
 
@@ -91,16 +97,63 @@ public class BMIFragment extends Fragment {
         ImageView removeIcon = view.findViewById(R.id.bmi_weight_decrement);
         ImageView addIcon    = view.findViewById(R.id.bmi_weight_increment);
 
-        removeIcon.setOnClickListener(v -> updateWeight(weight-1));
-        addIcon.setOnClickListener(v -> updateWeight(weight+1));
+        ArrayList<Integer> argList = new ArrayList<>();
+        argList.add(weight);
+
+        initSelectorBehaviour(removeIcon, addIcon, this::updateWeight, argList);
     }
 
     private void initAgeSelector(View view) {
         ImageView removeIcon = view.findViewById(R.id.bmi_age_decrement);
         ImageView addIcon    = view.findViewById(R.id.bmi_age_increment);
 
-        removeIcon.setOnClickListener(v -> updateAge(age-1));
-        addIcon.setOnClickListener(v -> updateAge(age+1));
+        ArrayList<Integer> argList = new ArrayList<>();
+        argList.add(age);
+
+        initSelectorBehaviour(removeIcon, addIcon, this::updateAge, argList);
+    }
+
+    private void initSelectorBehaviour(ImageView removeIcon, ImageView addIcon, Consumer<Integer> updateFn, ArrayList<Integer> currValue) {
+        Handler handler = new Handler();
+
+        Runnable decrementRunnable = new Runnable() {
+            @Override
+            public void run() {
+                int newValue = currValue.get(0) - 1;
+                currValue.set(0, newValue);
+                updateFn.accept(newValue);
+                handler.postDelayed(this, 100);
+            }
+        };
+        Runnable incrementRunnable = new Runnable() {
+            @Override
+            public void run() {
+                int newValue = currValue.get(0) + 1;
+                currValue.set(0, newValue);
+                updateFn.accept(newValue);
+                handler.postDelayed(this, 100);
+            }
+        };
+
+        setUpSelectorIconListener(handler, removeIcon, decrementRunnable);
+        setUpSelectorIconListener(handler, addIcon,    incrementRunnable);
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private void setUpSelectorIconListener(Handler handler, ImageView icon, Runnable runnable) {
+        icon.setOnTouchListener((view, event) -> {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    handler.post(runnable);
+                    handler.postDelayed(() -> handler.post(runnable), 500);
+                    return true;
+                case MotionEvent.ACTION_UP:
+                case MotionEvent.ACTION_CANCEL:
+                    handler.removeCallbacksAndMessages(null);
+                    return true;
+            }
+            return false;
+        });
     }
 
     private void updateGender(boolean isMale) {

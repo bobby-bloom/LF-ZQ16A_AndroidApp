@@ -203,11 +203,8 @@
                 android:layout_height="60dp"
                 android:padding="10dp"
                 android:src="@drawable/ic_remove_circle_foreground"
-                android:clickable="true"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-
-                />
+            />
         </RelativeLayout>
 
         <RelativeLayout
@@ -223,9 +220,7 @@
                 android:layout_height="60dp"
                 android:padding="10dp"
                 android:src="@drawable/ic_add_circle_foreground"
-                android:clickable="true"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
             />
         </RelativeLayout>
     </RelativeLayout>
@@ -242,7 +237,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:background="@drawable/bmi_selection_bg"
-        >
+    >
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -253,7 +248,7 @@
             android:textAlignment="center"
             android:textStyle="bold"
             android:layout_marginBottom="10dp"
-            />
+        />
 
         <TextView
             android:id="@+id/bmi_selection_age"
@@ -265,25 +260,22 @@
             android:textColor="@color/textPrimary"
             android:textSize="30sp"
             android:textStyle="bold"
-            />
+        />
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="10dp"
-            >
+        >
             <ImageView
                 android:id="@+id/bmi_age_decrement"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:padding="10dp"
                 android:src="@drawable/ic_remove_circle_foreground"
-                android:clickable="true"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-
-                />
+            />
         </RelativeLayout>
 
         <RelativeLayout
@@ -292,17 +284,15 @@
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="10dp"
             android:layout_alignParentEnd="true"
-            >
+        >
             <ImageView
                 android:id="@+id/bmi_age_increment"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:padding="10dp"
                 android:src="@drawable/ic_add_circle_foreground"
-                android:clickable="true"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                />
+            />
         </RelativeLayout>
     </RelativeLayout>
     <!-- END Age increment -->
@@ -315,7 +305,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        >
+    >
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bmi_btn_calculate"
             android:layout_height="60dp"
@@ -330,7 +320,7 @@
             android:textStyle="bold"
             app:cornerRadius="16dp"
             app:backgroundTint="@color/colorAccent"
-            />
+        />
     </RelativeLayout>
     <!--  END Calculate Btn  -->
 </RelativeLayout>
