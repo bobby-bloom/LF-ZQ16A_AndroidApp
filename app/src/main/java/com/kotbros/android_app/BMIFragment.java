@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -21,6 +22,9 @@ public class BMIFragment extends Fragment {
     private int height;
     private int weight;
     private int age;
+
+    private RelativeLayout btn_male;
+    private RelativeLayout btn_female;
 
     private TextView txtView_height;
     private TextView txtView_weight;
@@ -46,9 +50,16 @@ public class BMIFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_bmi, container, false);
 
+        btn_male       = view.findViewById(R.id.male_selection_frame);
+        btn_female     = view.findViewById(R.id.female_selection_frame);
         txtView_height = view.findViewById(R.id.bmi_selection_height);
         txtView_weight = view.findViewById(R.id.bmi_selection_weight);
         txtView_age    = view.findViewById(R.id.bmi_selection_age);
+
+        btn_male.setOnClickListener(v -> updateGender(true));
+        btn_female.setOnClickListener(v -> updateGender(false));
+
+        updateGender(isMale);
 
         initHeightSlider(view);
         initWeightSelector(view);
@@ -90,6 +101,13 @@ public class BMIFragment extends Fragment {
 
         removeIcon.setOnClickListener(v -> updateAge(age-1));
         addIcon.setOnClickListener(v -> updateAge(age+1));
+    }
+
+    private void updateGender(boolean isMale) {
+        this.isMale = isMale;
+
+        btn_male.setSelected(isMale);
+        btn_female.setSelected(!isMale);
     }
 
     private void updateHeight(int height) {
