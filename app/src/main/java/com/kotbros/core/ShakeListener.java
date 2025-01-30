@@ -9,7 +9,7 @@ public class ShakeListener implements SensorEventListener {
     private Runnable callback;
     private float[] gravity = new float[3];
     private float[] linear_acceleration = new float[3];
-    private static final float SHAKE_THRESHOLD = 6.0f;
+    private static final float SHAKE_THRESHOLD = 20.0f;
 
     public ShakeListener(Runnable callback) {
         this.callback = callback;
