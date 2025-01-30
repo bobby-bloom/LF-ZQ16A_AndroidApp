@@ -6,11 +6,11 @@
 
     <string name="weight_metric">Weight</string>
     <string name="height_metric">Height</string>
-s    <string name="age">Age</string>
+
+    <string name="age">Age</string>
 
     <string name="more_information">More information on Wikipedia</string>
     <string name="wikipedia_bmi_link">https://en.wikipedia.org/wiki/Body_mass_index</string>
-    <string name="bmi_result">BMI: %s</string>
     <string name="bmi_category_v_serv_underweight">Very severely underweight</string>
     <string name="bmi_category_serv_underweight">Severely underweight</string>
     <string name="bmi_category_underweight">Underweight</string>
@@ -23,8 +23,8 @@ s    <string name="age">Age</string>
     <string name="bmi_category_obese5">Obese Class V (Super Obese)</string>
     <string name="bmi_category_obese6">Obese Class VI (Hyper Obese)</string>
 
-    <string name="bmi_male_selection">Male</string>
-    <string name="bmi_female_selection">Female</string>
+    <string name="bmi_male">Male</string>
+    <string name="bmi_female">Female</string>
 
     <string name="bmi_default_height">180</string>
     <string name="bmi_default_weight">80</string>
@@ -35,6 +35,9 @@ s    <string name="age">Age</string>
 
     <string name="bmi_action_calculate">Calculate your BMI</string>
 
+    <string name="bmi_result_bmi">BMI: </string>
+    <string name="bmi_result_gender">Gender: </string>
+    <string name="bmi_result_category">Category: </string>
 
     <string name="action_about">About</string>
     <string name="author">Author</string>
@@ -63,7 +66,7 @@ s    <string name="age">Age</string>
 
         2. F-Droid Installations\n
            - If you install this app via F-Droid, I do not receive any usage or crash data.\n
-           - Please refer to https://f-droid.org/en/about/ for details on their data handling.\n
+           - Please refer to https://f-droid.org/en/about/ for details on their data handling.\n\n
 
         3. Auto Backup by Google\n
            - If your device has **Auto Backup by Google** enabled, your selected system of units (metric/imperial) may be backed up to Google Drive.\n
