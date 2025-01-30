@@ -4,8 +4,8 @@ import com.kotbros.android_app.R;
 
 public class BMI {
 
-    public static double calculate(double weight, double height, int age) {
-        double bmi = weight / Math.pow(height, 2);
+    public static double calculate(double weight, double height) {
+        double bmi = weight / Math.pow(height / 100, 2);
         return Math.round(bmi * 10.0) / 10.0;
     }
 
