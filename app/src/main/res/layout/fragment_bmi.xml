@@ -3,22 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bmi_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
 >
     <!--  BEGIN Centering Helper -->
     <RelativeLayout
+        android:id="@+id/fragment_bmi_horizontal_center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/fragment_bmi_horizontal_center"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="30dp"
+    />
+    <RelativeLayout
+        android:id="@+id/fragment_bmi_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fragment_bmi_horizontal_center"
         android:layout_centerInParent="true"
     />
     <RelativeLayout
+        android:id="@+id/fragment_bmi_vertical_center"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:id="@+id/fragment_bmi_vertical_center"
     />
     <!--  END Centering Helper -->
 
@@ -49,7 +58,7 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textColor="@color/textPrimary"
-            android:text="@string/bmi_male_selection"
+            android:text="@string/bmi_male"
             android:textStyle="bold"
             android:textAlignment="center"
             android:layout_alignParentBottom="true"
@@ -85,7 +94,7 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textColor="@color/textPrimary"
-            android:text="@string/bmi_female_selection"
+            android:text="@string/bmi_female"
             android:textStyle="bold"
             android:textAlignment="center"
             android:layout_alignParentBottom="true"
@@ -99,8 +108,8 @@
         android:id="@+id/fragment_bmi_slider_wrapper"
         android:layout_width="340dp"
         android:layout_height="150dp"
-        android:layout_above="@id/fragment_bmi_horizontal_center"
-        android:layout_centerInParent="true"
+        android:layout_above="@id/fragment_bmi_horizontal"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:background="@drawable/bmi_selection_bg"
@@ -318,7 +327,7 @@
             android:text="@string/bmi_action_calculate"
             android:textColor="@color/textPrimary"
             android:textStyle="bold"
-            app:cornerRadius="16dp"
+            app:cornerRadius="10dp"
             app:backgroundTint="@color/colorAccent"
         />
     </RelativeLayout>

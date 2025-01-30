@@ -5,9 +5,9 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Consumer;
 
 public class PlusMinusSelector {
 
@@ -19,22 +19,23 @@ public class PlusMinusSelector {
     private final int minValue;
     private final int maxValue;
 
-    private final TextView txtView;
     private final ImageView plusIcon;
     private final ImageView minusIcon;
 
+    private final Consumer<Integer> callback;
 
-    public PlusMinusSelector(int initialValue, int minValue, int maxValue, TextView txtView, ImageView plusIcon, ImageView minusIcon) {
+    public PlusMinusSelector(int initialValue, int minValue, int maxValue, ImageView plusIcon, ImageView minusIcon, Consumer<Integer> callback) {
         this.value = new AtomicInteger(initialValue);
         this.minValue = minValue;
         this.maxValue = maxValue;
 
-        this.txtView = txtView;
         this.plusIcon = plusIcon;
         this.minusIcon = minusIcon;
+
+        this.callback = callback;
     }
 
-    public void initialize(View view) {
+    public void initialize() {
         setUpTouchListener(minusIcon, () -> updateValue(value.decrementAndGet()));
         setUpTouchListener(plusIcon, () -> updateValue(value.incrementAndGet()));
     }
@@ -46,18 +47,22 @@ public class PlusMinusSelector {
 
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        handler.post(runnable);
-                        return true;
-                    case MotionEvent.ACTION_UP:
-                    case MotionEvent.ACTION_CANCEL:
-                        handler.removeCallbacksAndMessages(null);
-                        return true;
-                }
-                return false;
+                return handleOnTouch(event, runnable);
             }
         });
+    }
+
+    private boolean handleOnTouch(MotionEvent event, Runnable runnable) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                handler.post(runnable);
+                return true;
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
+                handler.removeCallbacksAndMessages(null);
+                return true;
+        }
+        return false;
     }
 
     private Runnable createRunnable(Runnable updateAction) {
@@ -75,7 +80,6 @@ public class PlusMinusSelector {
             return;
         }
         this.value.set(newValue);
-        txtView.setText(String.valueOf(newValue));
+        callback.accept(newValue);
     }
-
 }
