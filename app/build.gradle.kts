@@ -37,6 +37,8 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(libs.media3.session)
+    implementation(libs.media3.exoplayer)
 
     implementation(libs.android.gif.drawable)
     implementation("com.github.daniel-stoneuk:material-about-library:2.4.2")

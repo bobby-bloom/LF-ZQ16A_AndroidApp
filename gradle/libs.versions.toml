@@ -9,6 +9,7 @@ material = "1.10.0"
 activity = "1.10.0"
 constraintlayout = "2.1.4"
 materialAboutLibrary = "2.4.2"
+media3Session = "1.5.1"
 
 [libraries]
 android-gif-drawable = { module = "pl.droidsonroids.gif:android-gif-drawable", version.ref = "androidGifDrawable" }
@@ -20,6 +21,8 @@ material = { group = "com.google.android.material", name = "material", version.r
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 material-about-library = { module = "com.github.daniel-stoneuk:material-about-library", version.ref = "materialAboutLibrary" }
+media3-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "media3Session" }
+media3-session = { group = "androidx.media3", name = "media3-session", version.ref = "media3Session" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

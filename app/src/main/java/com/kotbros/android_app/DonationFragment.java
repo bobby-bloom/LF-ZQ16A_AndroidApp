@@ -17,12 +17,18 @@ import pl.droidsonroids.gif.GifImageView;
 
 public class DonationFragment extends Fragment {
 
+    Runnable callback;
+
     public DonationFragment() {
         // Required empty public constructor
     }
 
     public static DonationFragment newInstance() {
         return new DonationFragment();
+    }
+
+    public void setCallback(Runnable callback) {
+        this.callback = callback;
     }
 
     @Override
@@ -50,11 +56,8 @@ public class DonationFragment extends Fragment {
         return view;
     }
 
-
-
     private void playCatSound(View view) {
         MediaPlayer mp = MediaPlayer.create(view.getContext(), R.raw.cat_meow);
         mp.start();
     }
-
 }

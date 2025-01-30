@@ -1,8 +1,14 @@
 package com.kotbros.android_app;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
-import android.media.MediaPlayer;
+import android.content.ServiceConnection;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -18,6 +24,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.kotbros.core.ShakeListener;
 
 import java.util.Objects;
 
@@ -28,6 +35,26 @@ public class MainActivity extends AppCompatActivity
     private BMIFragment bmiFragment;
     private DonationFragment donationFragment;
 
+    private SensorManager sensorManager;
+    private Sensor sensorAccelerometer;
+    private ShakeListener shakeListener;
+    private PlaybackService playbackService;
+    private boolean bound = false;
+
+    private final ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            PlaybackService.LocalBinder binder = (PlaybackService.LocalBinder) service;
+            playbackService = binder.getService();
+            bound = true;
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            bound = false;
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +63,14 @@ public class MainActivity extends AppCompatActivity
 
         bmiFragment = BMIFragment.newInstance();
         donationFragment = DonationFragment.newInstance();
+        donationFragment.setCallback(this::playCatSound);
+
+        Intent intent = new Intent(this, PlaybackService.class);
+        startService(intent);
+
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        sensorAccelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        shakeListener = new ShakeListener(this::playSensorSound);
 
         bottomNavigation = findViewById(R.id.bottomNavigationView);
         bottomNavigation.setOnItemSelectedListener(this);
@@ -100,6 +135,34 @@ public class MainActivity extends AppCompatActivity
         return false;
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Intent intent = new Intent(this, PlaybackService.class);
+        bindService(intent, connection, Context.BIND_AUTO_CREATE);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (bound) {
+            unbindService(connection);
+            bound = false;
+        }
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        sensorManager.registerListener(shakeListener, sensorAccelerometer, SensorManager.SENSOR_DELAY_UI);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(shakeListener);
+    }
+
     private void addBackStackChangeListener() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.addOnBackStackChangedListener(() -> {
@@ -127,8 +190,25 @@ public class MainActivity extends AppCompatActivity
         transaction.commit();
     }
 
+
     private void playDonationSound() {
-        MediaPlayer mp = MediaPlayer.create(this, R.raw.donation_please);
-        mp.start();
+        playSound(R.raw.donation_please);
     }
+    private void playSensorSound() {
+        playSound(R.raw.shake_sound);
+    }
+    private void playCatSound() {
+        playSound(R.raw.cat_meow);
+    }
+
+    private void playSound(int resId) {
+        if (bound && playbackService != null) {
+            playbackService.playSound(this, resId);
+        } else {
+            Log.e("PlaybackService", "Service not yet bound!");
+        }
+    }
+
+
+
 }
